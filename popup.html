@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Подборка выйгрышной комбинации</title>
+    <style>
+        body{
+            width: 300px;
+            min-height: 150px;
+            border: solid 1px black;
+            border-radius: 5px;
+            box-shadow: 0 0 5px;
+        }
+        .pattern_table{
+            display: none;
+        }
+        span{
+                width: 100%;
+            display: inline-block;
+                text-align: center;
+        }
+        span.ticket_id{
+                width: auto;
+
+        }
+        .bingo_ticket{
+            background: #fff;
+            -webkit-border-radius: 14px;
+            border-radius: 14px;
+            cursor: pointer;
+            display: inline-block;
+            margin-right: 20px;
+            margin-top: 20px;
+            padding: 14px;
+            position: relative;
+            width: 260px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .ticket_number{
+            margin-bottom: 10px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .bingo_ticket table{
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        .bingo_ticket table tr:first-child td:first-child{
+            border-top-left-radius: 5px;
+        }
+        .bingo_ticket table tr:last-child td:first-child{
+            border-bottom-left-radius: 5px;
+        }
+        .bingo_ticket table tr:first-child td:last-child{
+            border-top-right-radius: 5px;
+        }
+        .bingo_ticket table tr:last-child td:last-child{
+            border-bottom-right-radius: 5px;
+        }
+        .bingo_ticket table tr:last-child td{
+            border-bottom: solid 1px #e3e3e3;
+        }
+        .bingo_ticket table tr.numbers:nth-child(4) td{
+            border-top: 1px solid #e3e3e3;
+        }
+        .bingo_ticket table tr.numbers:nth-child(3) td{
+            border-bottom: 1px solid #e3e3e3;
+        }
+
+        .bingo_ticket table tr.numbers td:last-child{
+                border-right: solid 1px #e3e3e3;
+        }
+        .bingo_ticket table tr.numbers td{
+            border-left: 1px solid #e3e3e3;
+            border-top: 1px solid #e3e3e3;
+            height: 25px;
+            text-align: center;
+            width: 25px;
+        }
+        table.table_active{
+            margin-bottom: 50px;
+        }
+        .bingo_ticket:hover:after{
+            border-color: #2bc26c;
+            opacity: .5;
+        }
+        .bingo_ticket table tr.space{
+            height: 10px;
+        }
+        .button{
+            cursor: pointer;
+            width: 15px;
+            position: relative;
+            left: 20px;
+            top: 20px;
+        }
+        .button2{
+            cursor: pointer;
+            width: 15px;
+            position: relative;
+            left: 40px;
+            top: 20px;
+        }
+        .button3{
+            cursor: pointer;
+            width: 15px;
+            position: relative;
+            left: 60px;
+            top: 20px;
+        }
+        input[type="range"]{
+            position: absolute;
+            bottom: 20px;
+            width: 93%;
+        }
+        .textDouble{
+            position: absolute;
+            bottom: 50px;
+            left: -72px;
+        }
+        .maxDouble{
+            position: absolute;
+            bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <span>поиск выйгрышной комбинации</span>
+
+
+    <img src="update.png" class="button" title="обновить выбор"></img>
+    <img src="bin.png" class="button2" title="удалить билет"></img>
+    <img src="start.png" class="button3" title="начать\остановить поиск" data-isActive="0"></img>
+
+
+    <div class="bingo_ticket selected">
+        <div class="ticket_number">Билет №
+            <span class="ticket_id"></span>
+        </div>
+
+        <table class="pattern_table">
+            <tbody>
+                <tr class="numbers"> </tr>
+                <tr class="numbers"> </tr>
+                <tr class="numbers"> </tr>
+
+                <tr class="space">
+                    <td colspan="9"></td>
+                </tr>
+
+                <tr class="numbers"> </tr>
+                <tr class="numbers"> </tr>
+                <tr class="numbers"> </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <span class="textDouble">максимум повторений </span><span class="maxDouble">5</span>
+    <input type="range" min="0" max="20" step="1" value="5">
+
+    <script src="popup.js"></script>
+    <script src="jquery.js"></script>
+</body>
+</html>
